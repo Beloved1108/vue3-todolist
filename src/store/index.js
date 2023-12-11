@@ -11,6 +11,7 @@ const store = createStore({
         // 1.增加list的方法
         addList(state,payload){
             state.list.push(payload)
+            console.log(state.list);
         }
     },
     getters:{

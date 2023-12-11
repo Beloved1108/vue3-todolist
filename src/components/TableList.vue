@@ -1,7 +1,6 @@
 <template>
     <div class="content">
-
-            <ul>
+        <ul>
             <li class="list">
                 <div class="center">
                     <input type="checkbox" class="check">
