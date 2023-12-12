@@ -1,15 +1,24 @@
 <template>
-    <div class="bottom">
+    <div class="bottom" v-if="store.state.list.length">
         <div class="center">
-            <input type="checkbox" class="check">
-            <p>已办事项<span>1</span>/全部事项<span>6</span></p>
-            <button class="done">清除已办</button>
-            <button class="all">清除所有</button>
+            <input type="checkbox" class="check" :chekced="store.getters.allDone">
+            <p>已办事项<span>{{store.getters.isDone.length}}</span>/全部事项<span>{{store.state.list.length}}</span></p>
+            <button class="done" @click="delDone">清除已办</button>
+            <button class="all" @click="delAll">清除所有</button>
         </div>
     </div>
 </template>
 
-<script>
+<script setup>
+import {useStore} from "vuex"
+const store = useStore()
+const delDone = ()=>{
+    store.commit('clearDone')
+}
+const delAll = ()=>{
+    store.commit('clearAll')
+}
+
 
 </script>
 

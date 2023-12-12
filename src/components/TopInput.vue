@@ -19,6 +19,17 @@ const add = ()=>{
         input.value = ''
         return alert("请输入有效内容！")
     }
+
+    // 如果该任务已经添加过了，提醒一下不要再重复添加了，如何判断一个数组中是否含有某个数组元素
+    // find 也是数组的遍历方法 可以查找数组中是否包含满足条件的数组元素 并且返回他
+    if(store.state.list.find((item)=>{
+        return item.value === input.value
+    })){
+        input.value = ""
+        return alert("该任务已经被添加了，请勿重复操作！")
+    }
+
+
     // 传递过去的payload不应该是个input的值,还包括一些其他的状态, 一般情况下需要给数据添加一个唯一的id，用来通过事件快速的找到他
     // 设置唯一的id方法：js内部：1.利用时间戳 new Date().getTime() 2.利用随机数 Math.random()
     store.commit('addList',{
@@ -27,7 +38,7 @@ const add = ()=>{
         isEdited:false,//编辑与否的状态
         id:Math.random()//唯一的id
         })
-
+        input.value = ''
 }
 </script>
 
