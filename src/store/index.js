@@ -62,6 +62,13 @@ const store = createStore({
         // 清除全部事项
         clearAll(state){
             state.list =[]
+        },
+        //切换所有 item.isDone 值
+        toggleAll( state,e){
+            state.list = state.list.map((item)=>{
+                item.isDone = e.target.checked
+                return item
+            })
         }
     },
     getters:{
